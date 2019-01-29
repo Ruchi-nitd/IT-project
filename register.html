@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register student | NITD</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/tooplate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body id="register">
+    <div class="container">
+        <div class="row tm-register-row">
+            <div class="col-sm-6 tm-register-col-l">
+                <form action="" method="post">
+                    <div class="mb-2">
+                        <label class="mr-4">
+                            <input class="with-gap" name="title" type="radio" value="mr" />
+                            <span>Mr.</span>
+                        </label>
+                        <label class="mr-4">
+                            <input class="with-gap" name="title" type="radio" value="ms" />
+                            <span>Ms.</span>
+                        </label>
+                    </div>
+
+                    <div class="input-field">
+                        <input placeholder="Full Name" id="name" name="name" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Email" id="email" name="email" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Password" id="password" name="password" type="password" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Roll Number" id="roll_number" name="roll_number" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="Registration Number" id="registration_number" name="registration_number" type="text" class="validate">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 pl-0 tm-pr-xs-0">
+                            <select name="course">
+                                <option value="-">Course</option>
+                                <option value="b-tech">B.Tech</option>
+                                <option value="m-tech">M.Tech</option>
+                                <option value="phd">PhD</option>
+                                <option value="mca">MCA</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 pl-0 tm-pr-xs-0">
+                            <select name="department">
+                                <option value="-">Department</option>
+                                <option value="cse">CSE</option>
+                                <option value="it">IT</option>
+                                <option value="ece">ECE</option>
+                                <option value="ee">EE</option>
+                                <option value="me">ME</option>
+                                <option value="ce">CE</option>
+                                <option value="ch">CH</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6 tm-register-col-r">
+                <header class="mb-5">
+                    <h3 class="mt-0 text-white">REGISTER</h3>
+                    <h5 class="text-white" >as a student</h5>
+                    <p class="grey-text">SOme e texts here.</p>
+                    <p class="grey-text">Some texts here.</p>
+                </header>
+                <div class="g-recaptcha" data-sitekey="6LdGm40UAAAAALwEC7NZGhfzWaolE3J4Ke6s7Avm"></div>
+                <div class="text-left mt-4">
+                    <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+</body>
+
+</html>
