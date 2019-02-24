@@ -15,12 +15,12 @@
     <div class="container">
         <div class="row tm-register-row tm-mb-35">
             <div class="col-sm-6 tm-login-l">
-                <form action="" method="post" class="tm-bg-black p-5 h-100">
+                <form id="login_form" action="" method="post" class="tm-bg-black p-5 h-100" >
                     <div class="input-field">
-                        <input placeholder="Email" id="username" name="email" type="email" class="validate">
+                        <input placeholder="Email" required id="username" name="email" type="email" class="validate">
                     </div>
                     <div class="input-field mb-5">
-                        <input placeholder="Password" id="password" name="password" type="password" class="validate">
+                        <input placeholder="Password" disabled required id="password" name="password" type="password" class="validate">
                     </div>
                     <div class="tm-flex-lr">
                         <a href="#" class="white-text small">Forgot Password?</a>
@@ -46,9 +46,67 @@
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('select').formSelect();
+
+
+        $('#username').on('input', function(e) {
+            var email = $('#username').val();
+
+            if(email.includes("@") && email.includes(".") && email.length > 5) {
+                $('#password').prop('disabled', false);
+            } else{
+                $('#password').prop('disabled', true);
+            }
+
         });
+
+        // function validate() {
+
+        //     var email = document.forms["login_form"]["email"].value;
+
+        //     if (!email.includes("@") && email.length < 5) {
+        //         return false;
+        //     }
+
+        // }
+
+
+        (function (global) { 
+
+    if(typeof (global) === "undefined") {
+        throw new Error("window is undefined");
+    }
+
+    var _hash = "!";
+    var noBackPlease = function () {
+        global.location.href += "#";
+
+        // making sure we have the fruit available for juice (^__^)
+        global.setTimeout(function () {
+            global.location.href += "!";
+        }, 50);
+    };
+
+    global.onhashchange = function () {
+        if (global.location.hash !== _hash) {
+            global.location.hash = _hash;
+        }
+    };
+
+    global.onload = function () {            
+        noBackPlease();
+
+        // disables backspace on page except on input fields and textarea..
+        document.body.onkeydown = function (e) {
+            var elm = e.target.nodeName.toLowerCase();
+            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                e.preventDefault();
+            }
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };          
+    }
+
+})(window);
     </script>
 </body>
 

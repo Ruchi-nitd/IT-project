@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row tm-register-row">
             <div class="col-sm-6 tm-register-col-l">
-                <form action="" method="post">
+                <form action="#">
                     <div class="mb-2">
                         <label class="mr-4">
                             <input class="with-gap" name="title" type="radio" value="mr" />
@@ -29,25 +29,25 @@
                     </div>
 
                     <div class="input-field">
-                        <input placeholder="Full Name" id="name" name="name" type="text" class="validate">
+                        <input required placeholder="Full Name" id="name" name="name" type="text" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Email" id="email" name="email" type="text" class="validate">
+                        <input required disabled placeholder="Email" id="email" name="email" type="text" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Password" id="password" name="password" type="password" class="validate">
+                        <input required disabled placeholder="Password" id="password" name="password" type="password" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" class="validate">
+                        <input required disabled placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate">
+                        <input required disabled placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Roll Number" id="roll_number" name="roll_number" type="text" class="validate">
+                        <input required disabled placeholder="Roll Number" id="roll_number" name="roll_number" type="text" class="validate">
                     </div>
                     <div class="input-field">
-                        <input placeholder="Registration Number" id="registration_number" name="registration_number" type="text" class="validate">
+                        <input required disabled placeholder="Registration Number" id="registration_number" name="registration_number" type="text" class="validate">
                     </div>
                     <div class="row">
                         <div class="col-sm-6 pl-0 tm-pr-xs-0">
@@ -92,9 +92,112 @@
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('select').formSelect();
+
+        $('#name').on('input', function(e) {
+            var name = $('#name').val();
+
+            if(name.length > 4) {
+                $('#email').prop('disabled', false);
+                console.log("done");
+            } else{
+                $('#email').prop('disabled', true);
+                console.log("null");
+            }
+
         });
+
+        $('#email').on('input', function(e) {
+            var email = $('#email').val();
+
+            if(email.includes("@") && email.includes(".") && email.length > 5) {
+                $('#password').prop('disabled', false);
+            } else{
+                $('#password').prop('disabled', true);
+            }
+
+        });
+
+        $('#password').on('input', function(e) {
+            var password = $('#password').val();
+
+            if(password.length > 5) {
+                $('#confirm_password').prop('disabled', false);
+            } else{
+                $('#confirm_password').prop('disabled', true);
+            }
+
+        });
+
+        $('#confirm_password').on('input', function(e) {
+            var confirm_password = $('#confirm_password').val();
+
+            if(confirm_password === $('#password').val()) {
+                $('#mobile').prop('disabled', false);
+            } else{
+                $('#mobile').prop('disabled', true);
+            }
+
+        });
+
+        $('#mobile').on('input', function(e) {
+            var mobile = $('#mobile').val();
+
+            if(mobile.length == 10) {
+                $('#roll_number').prop('disabled', false);
+            } else{
+                $('#roll_number').prop('disabled', true);
+            }
+
+        });
+
+        $('#roll_number').on('input', function(e) {
+            var roll_number = $('#roll_number').val();
+
+            if(roll_number.length > 7) {
+                $('#registration_number').prop('disabled', false);
+            } else{
+                $('#registration_number').prop('disabled', true);
+            }
+
+        });
+
+        (function (global) { 
+
+    if(typeof (global) === "undefined") {
+        throw new Error("window is undefined");
+    }
+
+    var _hash = "!";
+    var noBackPlease = function () {
+        global.location.href += "#";
+
+        // making sure we have the fruit available for juice (^__^)
+        global.setTimeout(function () {
+            global.location.href += "!";
+        }, 50);
+    };
+
+    global.onhashchange = function () {
+        if (global.location.hash !== _hash) {
+            global.location.hash = _hash;
+        }
+    };
+
+    global.onload = function () {            
+        noBackPlease();
+
+        // disables backspace on page except on input fields and textarea..
+        document.body.onkeydown = function (e) {
+            var elm = e.target.nodeName.toLowerCase();
+            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                e.preventDefault();
+            }
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };          
+    }
+
+})(window);
     </script>
 </body>
 
