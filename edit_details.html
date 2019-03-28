@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+ul   {list-style-type: none; margin:0; padding:0;background-color:black; border:1px solid black; overflow:hidden; text-align:center;}
+li a {display:block; width:200px; height:80px;color:white; font-size:20px; text-align:center; padding: 14px 16px;}
+li   {text-align:center; float:left; background-color:black;} 
+li a:hover {background-color:white; color:black;}
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register student | NITD</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="css/mystyles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body >
+  <ul>
+	<li><a href="index.php">Home</a></li>
+	<li><a href="about.html">About Us</a></li>
+	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="logout.php">Logout</a></li>
+	</ul>
+	<br>
+    <div class="container">
+        <div class="row tm-register-row">
+            <div class="col-sm-6 tm-register-col-l">
+                <form action="edit_details.php" method="post">
+                   
+                    <fieldset>
+		<legend>Personal Information</legend>
+                    <div class="Gender">
+                         <div class="mb-2">
+                        <label class="mr-4">
+                            <input class="with-gap" name="gender" type="radio" value="Male" />
+                            <span>Male</span>
+                        </label>
+                        <label class="mr-4">
+                            <input class="with-gap" name="gender" type="radio" value="Female" />
+                            <span>Female</span>
+                        </label>
+                    </div>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input placeholder="Guardian's name" id="gname" name="gname" type="text" class="validate" title="Name of Guardian"><span id="errfn" style="color:red"></span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input placeholder="Guardian's phone no." id="gno" name="gno" type="text" class="validate" required disabled title="10 Digit mobile number"><span id="errfn2" style="color:red"></span>
+                    </div>
+                    
+                     <div class="input-field">
+                        <input placeholder="Permanent Address" id="padd" name="padd" type="text" class="validate" required disabled title="Permanent Address"><span id="errfn3" style="color:red"></span>
+                    </div>
+                    
+                    
+                    
+                    <div class="col-sm-6 pl-0 tm-pr-xs-0">
+                            <select name="blood" id="blood" required disabled style="color:white">
+                                <option value="-">Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                    <br>
+                    <div class="col-sm-6 pl-0 tm-pr-xs-0">
+                            <select name="cat" id="cat" required disabled style="color:white">
+                                <option value="-">Category</option>
+                                <option value="GEN">GEN</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="input-field">
+                        <input placeholder="Hobbies" id="hobby" name="hobby" type="text" class="validate" title="Example: Singing" required disabled><span id="errfn4" style="color:red"></span>
+                    </div>
+               Uplaod a Profile photo<br><br>
+                     <input name="image" type="file" id="image" accept=".jpg,.jpeg,.png" size=40/>
+                   
+                    </fieldset>
+                        
+            
+            </div>
+            <div class="col-sm-6 tm-register-col-r">
+                <header class="mb-5">
+                        
+                    <fieldset>
+		<legend>Past Education</legend>
+                   Class X<br><br>
+                    <div class="input-field">
+                        <input placeholder="Board" id="10board" name="10board" type="text" class="validate" title="Example: CBSE"required disabled>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input placeholder="School" id="10school" name="10school" type="text" class="validate" required disabled>
+                    </div>
+                    
+                     <div class="input-field">
+                        <input placeholder="Percentage" id="10per" name="10per" type="text" class="validate" title="Example: 80.2" required disabled><span id="errfn5" style="color:red"></span>
+                    </div>
+                    
+                    Class XII<br><br>
+                    <div class="input-field">
+                        <input placeholder="Board" id="12board" name="12board" type="text" class="validate" title="Example:CBSE" required disabled>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input placeholder="School" id="12school" name="12school" type="text" class="validate" required disabled>
+                    </div>
+                    
+                     <div class="input-field">
+                        <input placeholder="Percentage" id="12per" name="12per" type="text" class="validate" required disabled>
+                    </div><span id="errfn6" style="color:red"></span>
+                    
+                    </fieldset>
+                        
+               
+                </header>
+                </div>
+            </div>
+        </div>
+        
+                  <div style="max-width: 1100px; margin-left:auto; margin-right:auto;">
+                  
+                   
+                    <fieldset>
+		<legend>Academic Performance</legend>
+                  
+                     <div class="col-sm-6 pl-0 tm-pr-xs-0">
+                            <select name="sem" id="sem" required disabled style="color:white">
+                                <option value="-">Current Semester</option>
+                                <option value="sem1">Sem 1</option>
+                                <option value="sem2">Sem 2</option>
+                                <option value="sem3">Sem 3</option>
+                                <option value="sem4">Sem 4</option>
+                                <option value="sem5">Sem 5</option>
+                                <option value="sem6">Sem 6</option>
+                                <option value="sem7">Sem 7</option>
+                                <option value="sem8">Sem 8</option>
+                            </select>
+                        </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 1 SGPA" id="sem1" name="sem1" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 2 SGPA" id="sem2" name="sem2" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 3 SGPA" id="sem3" name="sem3" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 4 SGPA" id="sem4" name="sem4" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 5 SGPA" id="sem5" name="sem5" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 6 SGPA" id="sem6" name="sem6" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 7 SGPA" id="sem7" name="sem7" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="SEM 8 SGPA" id="sem8" name="sem8" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     <div class="input-field">
+                        <input placeholder="CGPA" id="cgpa" name="cgpa" type="number" step="0.01" class="validate" required disabled>
+                    </div>
+                     
+                    
+                    </fieldset>
+                        <br>
+        <center> <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button></center>
+                </form>
+            </div>
+        
+        <br>
+    </div>
+
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+   
+   
+           <script>
+        $('#gname').on('input', function(e) {
+            var name = $('#gname').val();
+            var regex = /^[a-zA-Z ]+$/;
+            if(name.length >=3 && regex.test(name)==true) {
+                $('#gno').prop('disabled', false);
+                document.getElementById('errfn').innerHTML="";
+                console.log("done");
+            } else{
+                $('#gno').prop('disabled', true);
+                if(name.length < 3)
+                document.getElementById('errfn').innerHTML="Invalid(Too short)";
+                if(name.length >= 3)
+            	 document.getElementById('errfn').innerHTML="Use only alphabetic char";
+                console.log("null");
+            }
+        });
+        
+        $('#gno').on('input', function(e) {
+            var mobile = $('#gno').val();
+            var reg= /^[789]\d{9}$/;
+            if(mobile.length == 10 && reg.test(mobile)==true) {
+                $('#padd').prop('disabled', false);
+                document.getElementById('errfn2').innerHTML="";
+            } else{
+                $('#padd').prop('disabled', true);
+                document.getElementById('errfn2').innerHTML="Invalid Phone Number";
+            }
+        });
+        
+        $('#padd').on('input', function(e) {
+            var add = $('#padd').val();
+            if(add.length > 10) {
+                $('#blood').prop('disabled', false);
+                document.getElementById('errfn3').innerHTML="";
+            } else{
+                $('#blood').prop('disabled', true);
+                document.getElementById('errfn3').innerHTML="Too short";
+            }
+        });
+        
+        $('#blood').on('input', function(e) {
+            var c = $('#blood').val();
+            if(c==='blood_group') {
+                $('#cat').prop('disabled', true);
+            } else{
+                $('#cat').prop('disabled', false);
+            }
+        });
+        
+        $('#cat').on('input', function(e) {
+            var c = $('#cat').val();
+            if(c==='Category') {
+                $('#hobby').prop('disabled', true);
+            } else{
+                $('#hobby').prop('disabled', false);
+            }
+        });
+        
+       $('#hobby').on('input', function(e) {
+            var hobby = $('#hobby').val();
+            if(hobby.length > 5) {
+                $('#10board').prop('disabled', false);
+                document.getElementById('errfn4').innerHTML="";
+            } else{
+                $('#10board').prop('disabled', true);
+                document.getElementById('errfn4').innerHTML="Too short";
+            }
+        });
+        
+        
+        function validateFileType(){
+        var fileName = document.getElementById("fileName").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+            //TO DO
+        }else{
+            alert("Only jpg/jpeg and png files are allowed!");
+        }   
+    }
+    
+    
+    
+    
+        
+        $('#10board').on('input', function(e) {
+            var board = $('#10board').val();
+            if(board.length > 3) {
+                $('#10school').prop('disabled', false);
+            } else{
+                $('#10school').prop('disabled', true);
+            }
+        });
+         
+         
+         $('#10school').on('input', function(e) {
+            var school = $('#10school').val();
+            if(school.length > 10) {
+                $('#10per').prop('disabled', false);
+            } else{
+                $('#10per').prop('disabled', true);
+            }
+        }); 
+        
+        $('#10per').on('input', function(e) {
+            var name = $('#10per').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(name)==true && name<=100) {
+                $('#12board').prop('disabled', false);
+                console.log("done");
+                document.getElementById('errfn5').innerHTML="";
+            } else{
+                $('#12board').prop('disabled', true);
+                document.getElementById('errfn5').innerHTML="Inavlid Percentage: Example:70.6";
+                console.log("null");
+            }
+        });
+        
+        $('#12board').on('input', function(e) {
+            var board = $('#12board').val();
+            if(board.length > 3) {
+                $('#12school').prop('disabled', false);
+            } else{
+                $('#12school').prop('disabled', true);
+            }
+        });
+         
+         
+         $('#12school').on('input', function(e) {
+            var school = $('#12school').val();
+            if(school.length > 10) {
+                $('#12per').prop('disabled', false);
+            } else{
+                $('#12per').prop('disabled', true);
+            }
+        }); 
+        
+        $('#12per').on('input', function(e) {
+            var per = $('#12per').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(per)==true) {
+                $('#sem').prop('disabled', false);
+                document.getElementById('errfn6').innerHTML="";
+                console.log("done");
+            } else{
+                $('#sem').prop('disabled', true);
+                document.getElementById('errfn6').innerHTML="Invalid Percentage. Example:70.6";
+                console.log("null");
+            }
+        });
+        
+        
+        $('#sem').on('input', function(e) {
+            var c = $('#sem').val();
+            if(c==='Current Semester') {
+                $('#sem1').prop('disabled', true);
+            } else{
+                $('#sem1').prop('disabled', false);
+            }
+        });
+        
+         $('#sem1').on('input', function(e) {
+            var sg = $('#sem1').val();
+            var sem = $('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem2") {
+                $('#sem2').prop('disabled', false);
+                console.log("done");
+            } else if(regex.test(sg)==true && sem<"sem2")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              }
+            else{
+                $('#sem2').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        $('#sem2').on('input', function(e) {
+            var sg = $('#sem2').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem3") {
+                $('#sem3').prop('disabled', false);
+                console.log("done");
+            }else if(regex.test(sg)==true && sem<"sem3")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              } 
+            else{
+                $('#sem3').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        $('#sem3').on('input', function(e) {
+            var sg = $('#sem3').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem4") {
+                $('#sem4').prop('disabled', false);
+                console.log("done");
+            }
+            else if(regex.test(sg)==true && sem<"sem4")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              }
+             else{
+                $('#sem4').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        $('#sem4').on('input', function(e) {
+            var sg = $('#sem4').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem5") {
+                $('#sem5').prop('disabled', false);
+                console.log("done");
+            }
+            else if(regex.test(sg)==true && sem<"sem5")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              }
+             else{
+                $('#sem5').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        $('#sem5').on('input', function(e) {
+            var sg = $('#sem5').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem6") {
+                $('#sem6').prop('disabled', false);
+                console.log("done");
+            }
+            else if(regex.test(sg)==true && sem<"sem6")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              } 
+            else{
+                $('#sem6').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        
+        $('#sem6').on('input', function(e) {
+            var sg = $('#sem6').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem7") {
+                $('#sem7').prop('disabled', false);
+                console.log("done");
+            }
+            else if(regex.test(sg)==true && sem<"sem7")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              } 
+            else{
+                $('#sem7').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        $('#sem7').on('input', function(e) {
+            var sg = $('#sem7').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true && sem>="sem8") {
+                $('#sem8').prop('disabled', false);
+                console.log("done");
+            }
+            else if(regex.test(sg)==true && sem<"sem8")
+              {
+                $('#cgpa').prop('disabled',false);
+                console.log("done");
+              } 
+            else{
+                $('#sem8').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        $('#sem8').on('input', function(e) {
+            var sg = $('#sem8').val();
+            var sem=$('#sem').val();
+            var regex = /^[+-]?\d+(\.\d+)?$/;
+            if(regex.test(sg)==true) {
+                $('#cgpa').prop('disabled', false);
+                console.log("done");
+            } else{
+                $('#cgpa').prop('disabled', true);
+                console.log("null");
+            }
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        (function (global) { 
+    if(typeof (global) === "undefined") {
+        throw new Error("window is undefined");
+    }
+    var _hash = "!";
+    var noBackPlease = function () {
+        global.location.href += "#";
+        // making sure we have the fruit available for juice (^__^)
+        global.setTimeout(function () {
+            global.location.href += "!";
+        }, 50);
+    };
+    global.onhashchange = function () {
+        if (global.location.hash !== _hash) {
+            global.location.hash = _hash;
+        }
+    };
+    global.onload = function () {            
+        noBackPlease();
+        // disables backspace on page except on input fields and textarea..
+        document.body.onkeydown = function (e) {
+            var elm = e.target.nodeName.toLowerCase();
+            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                e.preventDefault();
+            }
+            // stopping event bubbling up the DOM tree..
+            e.stopPropagation();
+        };          
+    }
+})(window);
+    </script>
+    
+    
+</body>
+
+</html>

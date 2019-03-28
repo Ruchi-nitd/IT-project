@@ -1,8 +1,12 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <style>
-ul   {list-style-type: none; margin:0; padding:0;background-color:transparent; border:1px solid black; overflow:hidden; text-align:center;}
+ul   {list-style-type: none; margin:0; padding:0;background-color:transparent; border:none; overflow:hidden; text-align:center;}
 li a {display:block; width:200px; height:60px;color:white; font-size:20px; text-align:center; padding: 14px 16px;}
 li   {text-align:center; float:left; background-color:transparent;} 
 li a:hover {background-color:white; color:black;}
@@ -20,9 +24,9 @@ li a:hover {background-color:white; color:black;}
 
 <body id="login">	
 	<ul>
-	<li><a href="index.html">Home</a></li>
-	<li><a href="login.html">User-Login</a></li>
-	<li><a href="login.html">Admin-Login</a></li>
+	<li><a href="index.php">Home</a></li>
+	<li><a href="login.php">User-Login</a></li>
+	<li><a href="login.php">Admin-Login</a></li>
 	<li><a href="about.html">About Us</a></li>
 	<li><a href="faq.html">FAQ</a></li>
 	</ul>
@@ -40,7 +44,14 @@ li a:hover {background-color:white; color:black;}
                         <a href="#" class="white-text small">Forgot Password?</a>
                         <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">Login</button>
                     </div>
+                    <?php
+                    if(isset($_SESSION["error"])){
+                        $error = $_SESSION["error"];
+                        echo "<span style='color:red'>$error</span>";
+                    }
+                ?>  
                 </form>
+                
             </div>
             <div class="col-sm-6 tm-login-r">
                 <header class="font-weight-light tm-bg-black p-5 h-100">
@@ -49,6 +60,7 @@ li a:hover {background-color:white; color:black;}
                     <p class="mb-0">Please add some texts here.</p>
                 </header>
             </div>
+            
         </div>
         <div class="row">
             <div class="col-sm-6 ml-auto mr-0 text-center">
@@ -96,3 +108,6 @@ li a:hover {background-color:white; color:black;}
 </body>
 
 </html>
+<?php
+    unset($_SESSION["error"]);
+?>

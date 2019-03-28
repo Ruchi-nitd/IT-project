@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+ul   {list-style-type: none; margin:0; padding:0;background-color:#0c0218; border:1px solid black; overflow:hidden; text-align:center;}
+li a {display:block; width:200px; height:80px;color:white; font-size:20px; text-align:center; padding: 14px 16px;}
+li   {text-align:center; float:left; background-color:#0c0218;} 
+li a:hover {background-color:white; color:#0c0218;}
+</style>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,180 +20,255 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
-<body id="register">
+
+
+
+<body>
+
+  <ul>
+	<li><a href="index.php">Home</a></li>
+	<li><a href="login.php">User-Login</a></li>
+	<li><a href="login.php">Admin-Login</a></li>
+	<li><a href="about.html">About Us</a></li>
+	<li><a href="faq.html">FAQ</a></li>
+	</ul>
+	<br>
+	
     <div class="container">
         <div class="row tm-register-row">
             <div class="col-sm-6 tm-register-col-l">
-                <form action="#">
+            
+               <form action="reg.php" method="post">
                     <div class="mb-2">
                         <label class="mr-4">
-                            <input class="with-gap" name="title" type="radio" value="mr" />
+                            <input class="with-gap" name="title" type="radio" value="Mr" />
                             <span>Mr.</span>
                         </label>
                         <label class="mr-4">
-                            <input class="with-gap" name="title" type="radio" value="ms" />
+                            <input class="with-gap" name="title" type="radio" value="Ms" />
                             <span>Ms.</span>
                         </label>
                     </div>
+                    
 
                     <div class="input-field">
-                        <input required placeholder="Full Name" id="name" name="name" type="text" class="validate">
+                        <input required placeholder="Full Name" id="name" name="name" type="text" class="validate" title="Write full name"><span id="errfn" style="color:red"></span>
+                    </div>
+                    
+                    
+                    <div class="input-field">
+                        <input required disabled placeholder="Email" id="email" name="email" type="email" class="validate" title="Write email address "><span id="errfn2" style="color:red"></span>
                     </div>
                     <div class="input-field">
-                        <input required disabled placeholder="Email" id="email" name="email" type="text" class="validate">
+                        <input required disabled placeholder="Password" id="password" name="password" type="password" class="validate" title="1 capital char, 1 digit, minimum length=8"><span id="errfn3" style="color:red"></span>
                     </div>
                     <div class="input-field">
-                        <input required disabled placeholder="Password" id="password" name="password" type="password" class="validate">
+                        <input required disabled placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" class="validate" title="Same as password"><span id="errfn4" style="color:red"></span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input required disabled placeholder="Date of Birth" id="dob" name="dob" type="text" onfocus="(this.type='date')">
+                    </div>   
+                    
+                    <div class="input-field">
+                        <input required disabled  placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate" title="10 Digit mobile number"> <span id="errfn5" style="color:red"></span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input required disabled  placeholder="Address" id="address" name="address" type="text" class="validate" title="College Address"><span id="errfn6" style="color:red"></span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input required disabled  placeholder="Roll Number" id="roll_number" name="roll_number" type="text" class="validate" title="Format Example: 16ME8001 (Use Capital letters)"><span id="errfn7" style="color:red"></span>
                     </div>
                     <div class="input-field">
-                        <input required disabled placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" class="validate">
-                    </div>
-                    <div class="input-field">
-                        <input required disabled placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate">
-                    </div>
-                    <div class="input-field">
-                        <input required disabled placeholder="Roll Number" id="roll_number" name="roll_number" type="text" class="validate">
-                    </div>
-                    <div class="input-field">
-                        <input required disabled placeholder="Registration Number" id="registration_number" name="registration_number" type="text" class="validate">
+                        <input required disabled  placeholder="Registration Number" id="registration_number" name="registration_number" type="text" class="validate" title="Format Example: 16U10234"><span id="errfn8" style="color:red"></span>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 pl-0 tm-pr-xs-0">
-                            <select name="course">
+                            <select name="course" id="course" required disabled style="color:white">
                                 <option value="-">Course</option>
-                                <option value="b-tech">B.Tech</option>
-                                <option value="m-tech">M.Tech</option>
-                                <option value="phd">PhD</option>
-                                <option value="mca">MCA</option>
+                                <option value="B-Tech">B.Tech</option>
+                                <option value="M-Tech">M.Tech</option>
+                                <option value="PhD">PhD</option>
+                                <option value="MCA">MCA</option>
                             </select>
                         </div>
                         <div class="col-sm-6 pl-0 tm-pr-xs-0">
-                            <select name="department">
+                            <select name="department" id="dept" required disabled style="color:white">
                                 <option value="-">Department</option>
-                                <option value="cse">CSE</option>
-                                <option value="it">IT</option>
-                                <option value="ece">ECE</option>
-                                <option value="ee">EE</option>
-                                <option value="me">ME</option>
-                                <option value="ce">CE</option>
-                                <option value="ch">CH</option>
+                                <option value="CSE">CSE</option>
+                                <option value="Information Technology">IT</option>
+                                <option value="ECE">ECE</option>
+                                <option value="Electrical Engineering">EE</option>
+                                <option value="Mechanical Engineering">ME</option>
+                                <option value="Civil Engineering">CE</option>
+                                <option value="Chemical Engineering">CH</option>
                             </select>
                         </div>
-                    </div>
-                </form>
+                      </div>
+                     <br><br>        
+                
             </div>
             <div class="col-sm-6 tm-register-col-r">
                 <header class="mb-5">
                     <h3 class="mt-0 text-white">REGISTER</h3>
                     <h5 class="text-white" >as a student</h5>
-                    <p class="grey-text">SOme e texts here.</p>
-                    <p class="grey-text">Some texts here.</p>
+                    <p class="grey-text"></p>
+                    <p class="grey-text"></p>
                 </header>
                 <div class="g-recaptcha" data-sitekey="6LdGm40UAAAAALwEC7NZGhfzWaolE3J4Ke6s7Avm"></div>
                 <div class="text-left mt-4">
-                    <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button>
+               
+                   <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button>
+                   <button type="reset" class="waves-effect btn-large btn-large-white px-4 black-text">RESET</butto>
                 </div>
             </div>
         </div>
     </div>
-
+</form>
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/materialize.min.js"></script>
-    <script>
-
+    
+    
+        <script>
         $('#name').on('input', function(e) {
             var name = $('#name').val();
-
-            if(name.length > 4) {
+            var regex = /^[a-zA-Z ]+$/;
+            if(name.length >= 3 && regex.test(name)==true) {
                 $('#email').prop('disabled', false);
+                document.getElementById('errfn').innerHTML="";
                 console.log("done");
             } else{
+                if(name.length < 3)
+                document.getElementById('errfn').innerHTML="Invalid(Too short)";
+                if(name.length >= 3)
+            	 document.getElementById('errfn').innerHTML="Use only alphabetic char";
                 $('#email').prop('disabled', true);
                 console.log("null");
             }
-
         });
-
         $('#email').on('input', function(e) {
             var email = $('#email').val();
-
-            if(email.includes("@") && email.includes(".") && email.length > 5) {
+            var reg= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(reg.test(email)) {
                 $('#password').prop('disabled', false);
+                document.getElementById('errfn2').innerHTML="";
             } else{
+                document.getElementById('errfn2').innerHTML="Invalid email";
                 $('#password').prop('disabled', true);
             }
-
         });
-
         $('#password').on('input', function(e) {
             var password = $('#password').val();
-
-            if(password.length > 5) {
+           var regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+            if(regex.test(password)==true) {
                 $('#confirm_password').prop('disabled', false);
+                document.getElementById('errfn3').innerHTML="";
             } else{
+                 document.getElementById('errfn3').innerHTML="Invalid: Use atleast 1 Capital letter, 1 small letter, 1 digit (Minimum length=8)";
                 $('#confirm_password').prop('disabled', true);
             }
-
         });
-
         $('#confirm_password').on('input', function(e) {
             var confirm_password = $('#confirm_password').val();
-
             if(confirm_password === $('#password').val()) {
-                $('#mobile').prop('disabled', false);
+                $('#dob').prop('disabled', false);
+                document.getElementById('errfn4').innerHTML="";
+            } else{
+            document.getElementById('errfn4').innerHTML="Does not match the above password";
+                $('#dob').prop('disabled', true);
+            }
+        });
+        
+        $('#dob').on('input', function(e) {
+            var date = $('#dob').val();
+            if(date!="") {
+                  
+                  $('#mobile').prop('disabled', false);
+               
             } else{
                 $('#mobile').prop('disabled', true);
+                
             }
-
         });
-
+        
+        
         $('#mobile').on('input', function(e) {
             var mobile = $('#mobile').val();
-
-            if(mobile.length == 10) {
+            var reg= /^[6789]\d{9}$/;
+            if(mobile.length == 10 && reg.test(mobile)==true) {
+                $('#address').prop('disabled', false);
+                 document.getElementById('errfn5').innerHTML="";
+            } else{
+                $('#address').prop('disabled', true);
+                document.getElementById('errfn5').innerHTML="Invalid Mobile Number";
+            }
+        });
+        
+        $('#address').on('input', function(e) {
+            var add = $('#address').val();
+            if(add.length > 10) {
                 $('#roll_number').prop('disabled', false);
+                 document.getElementById('errfn6').innerHTML="";
             } else{
                 $('#roll_number').prop('disabled', true);
+                 document.getElementById('errfn6').innerHTML="Too short";
             }
-
         });
-
+        
         $('#roll_number').on('input', function(e) {
             var roll_number = $('#roll_number').val();
-
-            if(roll_number.length > 7) {
+             var regex = /^\d{2}(IT|BT|CS|EC|CE|ME|MME|EE)\d{4}$/;
+            if(regex.test(roll_number)==true) {
                 $('#registration_number').prop('disabled', false);
+                 document.getElementById('errfn7').innerHTML="";
             } else{
                 $('#registration_number').prop('disabled', true);
+                 document.getElementById('errfn7').innerHTML="Invalid: correct format is like 14ME8022";
             }
-
         });
-
+        
+         $('#registration_number').on('input', function(e) {
+            var reg_number = $('#registration_number').val();
+             var regex = /^\d{2}[A-Z]\d{5}$/;
+            if(regex.test(reg_number)==true) {
+                $('#course').prop('disabled', false);
+                 document.getElementById('errfn8').innerHTML="";
+            } else{
+                $('#course').prop('disabled', true);
+                 document.getElementById('errfn8').innerHTML="Invalid Registration Number";
+            }
+        });
+        
+         $('#course').on('input', function(e) {
+            var c = $('#course').val();
+            if(c==='course') {
+                $('#dept').prop('disabled', true);
+            } else{
+                $('#dept').prop('disabled', false);
+            }
+        });
+        
         (function (global) { 
-
     if(typeof (global) === "undefined") {
         throw new Error("window is undefined");
     }
-
     var _hash = "!";
     var noBackPlease = function () {
         global.location.href += "#";
-
         // making sure we have the fruit available for juice (^__^)
         global.setTimeout(function () {
             global.location.href += "!";
         }, 50);
     };
-
     global.onhashchange = function () {
         if (global.location.hash !== _hash) {
             global.location.hash = _hash;
         }
     };
-
     global.onload = function () {            
         noBackPlease();
-
         // disables backspace on page except on input fields and textarea..
         document.body.onkeydown = function (e) {
             var elm = e.target.nodeName.toLowerCase();
@@ -196,9 +279,10 @@
             e.stopPropagation();
         };          
     }
-
 })(window);
     </script>
+    
+    
 </body>
 
 </html>

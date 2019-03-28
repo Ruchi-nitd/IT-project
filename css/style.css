@@ -6,7 +6,7 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   color: white;
   overflow-x: hidden;
-  background-color: #000;
+  background-color:  #0c0218;
 }
 
 .tm-site-title {
@@ -100,7 +100,7 @@ ul.tm-home-list:not(.browser-default) {
 }
 
 #home {
-  background-image: linear-gradient(#C6FFDD, #FBD786,#f7797d);
+  background-image: linear-gradient(to right top, #268787, #008ea0, #0093bb, #0096d5, #1296eb);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -257,7 +257,7 @@ textarea:focus {
 }
 
 .dropdown-content {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .select-wrapper .caret {
@@ -321,7 +321,7 @@ input[type="email"]:not(.browser-default).tm-input-white-bg {
 }
 
 .tm-form-white .select-wrapper input.select-dropdown {
-  color: black;
+  color: white;
   background-color: white;
   border-radius: 5px;
   padding: 0 10px;
@@ -409,6 +409,7 @@ input[type="email"]:not(.browser-default).tm-input-white-bg {
 .tm-font-big [type="radio"]:checked + span,
 .tm-font-big .select-wrapper input.select-dropdown {
   font-size: 1.2rem;
+  color: white
 }
 
 .btn-white {

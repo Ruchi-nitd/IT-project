@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,10 +46,46 @@
             <div class="col-sm-6">
                 <ul class="list-group tm-home-list tm-bg-black font-weight-light">
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="login.html" class="tm-white-text">Login</a>
+                    <?php
+                    if(isset($_SESSION['login']))
+                    {
+                     ?>
+                      <a href="logout.php" class="tm-white-text">Logout</a>
+                     <?php
+                    }
+                    else
+                    {
+                      ?>
+                        <a href="login.php" class="tm-white-text">Login</a>
+                        <?php
+                    }
+                    ?>
                     </li>
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="register.html" class="tm-white-text">Register</a>
+                     <?php
+                    if(isset($_SESSION['login']))
+                    {
+                      if($_SESSION['username']== 'admin@gmail.com')
+                      {
+                       ?>
+                      <a href="ad.php" class="tm-white-text">My Profile</a>
+                     <?php
+                     }
+                     else
+                     {
+                     ?>
+                      <a href="profile.php" class="tm-white-text">My Profile</a>
+                     <?php
+                     
+                     }
+                    }
+                    else
+                    {
+                      ?>
+                         <a href="register.html" class="tm-white-text">Register</a>
+                        <?php
+                    }
+                    ?>
                     </li>
                     <li class="d-flex justify-content-between align-items-center">
                         <a href="contact.html" class="tm-white-text">Contact Us</a>
@@ -60,45 +100,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        (function (global) { 
-
-    if(typeof (global) === "undefined") {
-        throw new Error("window is undefined");
-    }
-
-    var _hash = "!";
-    var noBackPlease = function () {
-        global.location.href += "#";
-
-        // making sure we have the fruit available for juice (^__^)
-        global.setTimeout(function () {
-            global.location.href += "!";
-        }, 50);
-    };
-
-    global.onhashchange = function () {
-        if (global.location.hash !== _hash) {
-            global.location.hash = _hash;
-        }
-    };
-
-    global.onload = function () {            
-        noBackPlease();
-
-        // disables backspace on page except on input fields and textarea..
-        document.body.onkeydown = function (e) {
-            var elm = e.target.nodeName.toLowerCase();
-            if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
-                e.preventDefault();
-            }
-            // stopping event bubbling up the DOM tree..
-            e.stopPropagation();
-        };          
-    }
-
-})(window);
-    </script>
 </body>
 
 </html>
