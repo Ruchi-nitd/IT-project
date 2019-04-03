@@ -54,8 +54,8 @@ while($row = $result->fetch_assoc())
 <div align=right>
 <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	<li><a href="logout.php">LOGOUT</a></li>
 	<li style="float:right; padding:10px 10px;"><?php echo "<span style='color:orange;font-size:20px;'> Welcome ".$row['Name']." ";?></li>
 	</ul>
@@ -66,9 +66,14 @@ while($row = $result->fetch_assoc())
  </div>
 	
 	<table align="center" border="1px" style="width:1250px; line-height:10px;">
-	 <tr>
+<tr>
 				<th colspan="2"><h4>BASIC INFO</h4></th>
 	</tr>
+	
+
+			   <?php echo '<th><img src="data:image/jpeg;base64,'.base64_encode($row['Image']).'"/>
+        '?>
+       
         <tr>
 			    <th><?php echo "Name"?></th>
 			    <th><?php echo $row["Gender"] . " " . $row["Name"] ?></th>
@@ -94,14 +99,16 @@ while($row = $result->fetch_assoc())
 			    <th><?php echo "Date of Birth"?></th>
 			    <th><?php echo $row["Date_of_Birth"]?></th>
         </tr>
+       <tr>
+			    <th><?php echo "Age"?></th>
+			    <th><?php echo $row["Age"]?></th>
+        </tr>
+       
         <tr>
 			    <th><?php echo "Hobbies"?></th>
 			    <th><?php echo $row["Hobbies"]?></th>
         </tr>
-        <tr>
-			    <th><?php echo " Photo"?></th>
-			    <th><?php echo $row["Image"]?></th>
-        </tr>
+        
          <tr>
 			    <th><?php echo "Blood Group"?></th>
 			    <th><?php echo $row["Blood_Group"]?></th>
@@ -215,6 +222,11 @@ while($row = $result->fetch_assoc())
         </tr>
         </table>
         
+        <br><br>
+        
+       <center> <button  onclick="myFunction()" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">PRINT</button>
+        <br><br>
+
 
 <?php
 }
@@ -228,9 +240,14 @@ $conn->close();
 ?>
 
 
-
+<script>
+function myFunction() {
+  window.print();
+}
+</script>
 
 <script>
+
     (function (global) { 
     if(typeof (global) === "undefined") {
         throw new Error("window is undefined");

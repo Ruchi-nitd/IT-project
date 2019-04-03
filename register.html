@@ -18,6 +18,31 @@ li a:hover {background-color:white; color:#0c0218;}
     <link rel="stylesheet" href="css/mystyles.css">
     <link rel="stylesheet" href="css/style.css">
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    	<script type="text/javascript">
+		function ageCount() {
+    var date1 = new Date();
+    var dob = document.getElementById("dob").value;
+    var date2 = new Date(dob);
+    var pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+    //Regex to validate date format (dd/mm/yyyy)       
+    if (true) {
+        var y1 = date1.getFullYear();
+        //getting current year            
+        var y2 = date2.getFullYear();
+        //getting dob year            
+        var age = y1 - y2;
+        //calculating age                       
+        document.getElementById("age").value = age;
+        doucment.getElementById("age").focus ();
+        return true;
+    } else {
+        alert("Invalid date format. Please Input in (dd/mm/yyyy) format!");
+        return false;
+    }
+
+}
+
+	</script>
 </head>
 
 
@@ -25,12 +50,14 @@ li a:hover {background-color:white; color:#0c0218;}
 
 <body>
 
+
+
   <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="login.php">User-Login</a></li>
-	<li><a href="login.php">Admin-Login</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="login.php">Login</a></li>
+	
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	</ul>
 	<br>
 	
@@ -67,8 +94,11 @@ li a:hover {background-color:white; color:#0c0218;}
                     </div>
                     
                     <div class="input-field">
-                        <input required disabled placeholder="Date of Birth" id="dob" name="dob" type="text" onfocus="(this.type='date')">
+                        <input required disabled placeholder="Date of Birth" id="dob" name="dob" type="text" onfocus="(this.type='date')" onblur="ageCount()" >
                     </div>   
+                    <div class="input-field">
+                        <input required disabled placeholder="Age" id="age" name="age" type="text">
+                    </div> 
                     
                     <div class="input-field">
                         <input required disabled  placeholder="Mobile" id="mobile" name="mobile" type="text" class="validate" title="10 Digit mobile number"> <span id="errfn5" style="color:red"></span>
@@ -132,6 +162,10 @@ li a:hover {background-color:white; color:#0c0218;}
     
     
         <script>
+        
+        
+        
+        
         $('#name').on('input', function(e) {
             var name = $('#name').val();
             var regex = /^[a-zA-Z ]+$/;
@@ -184,14 +218,15 @@ li a:hover {background-color:white; color:#0c0218;}
         $('#dob').on('input', function(e) {
             var date = $('#dob').val();
             if(date!="") {
-                  
-                  $('#mobile').prop('disabled', false);
+                  $('#age').prop('disabled', false);
+                  $('#mobile').prop('disabled', false);   
                
             } else{
-                $('#mobile').prop('disabled', true);
+                $('#age').prop('disabled', true);
                 
             }
         });
+        
         
         
         $('#mobile').on('input', function(e) {
@@ -280,6 +315,8 @@ li a:hover {background-color:white; color:#0c0218;}
         };          
     }
 })(window);
+
+
     </script>
     
     

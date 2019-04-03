@@ -41,6 +41,10 @@ if (isset($_POST['dob']))
 $dob = $_POST['dob'];
 else
 $dob = null;
+if (isset($_POST['age']))
+$age = $_POST['age'];
+else
+$age = null;
 if (isset($_POST['title']))
 $gender = $_POST['title'];
 else
@@ -71,7 +75,7 @@ else
 $department=null;
 
 $sql = "UPDATE Info SET
-Gender='$gender', Registration_Number='$reg', Name='$name', Roll_Number='$roll', Password='$password', Mobile='$mobile', Address='$address', Date_of_Birth='$dob', Course='$course', Department='$department' WHERE Email='{$_SESSION['username']}'";
+Gender='$gender', Registration_Number='$reg', Name='$name', Roll_Number='$roll', Mobile='$mobile', Address='$address', Date_of_Birth='$dob', Age='$age', Course='$course', Department='$department' WHERE Email='{$_SESSION['username']}'";
 if ($conn->query($sql) === TRUE) {
 header("location: stud.php");
 } 

@@ -115,8 +115,8 @@ if (isset($_POST['cgpa']))
 $cgpa = $_POST['cgpa'];
 else $cgpa = null;
 
-if (isset($_POST['image']))
-$image = $_POST['image'];
+if (isset($_POST['submit']))
+$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 else $image = null;
 
 $sql = "INSERT INTO Edit_Details (Email, Guardian_Gender, Guardian_Name, Guardian_Phone,Permanent_Address, Blood_Group, Category, Hobbies, Image, Tenth_Board, Tenth_School, Tenth_Percentage, Twelfth_Board, Twelfth_School, Twelfth_Percentage, Current_Semester, Sem1_SGPA,  Sem2_SGPA,  Sem3_SGPA,  Sem4_SGPA,  Sem5_SGPA,  Sem6_SGPA,  Sem7_SGPA,  Sem8_SGPA, CGPA) 

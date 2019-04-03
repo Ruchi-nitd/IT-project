@@ -101,8 +101,8 @@ a {font-size:20px; padding: 12px;}
 	<div style="float:left">
 <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	<li><a href="ad.php">MY PROFILE</a></li>
 	<li><a href="logout.php">LOGOUT</a></li>
 	</ul>

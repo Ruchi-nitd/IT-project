@@ -25,10 +25,10 @@ li a:hover {background-color:white; color:black;}
 <body id="login">	
 	<ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="login.php">User-Login</a></li>
-	<li><a href="login.php">Admin-Login</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="register.html">Register</a></li>
+	<li><a href="contact.php">Contact</a></li>
+	
+	<li><a href="faq.php">FAQ</a></li>
 	</ul>
     <div class="container">
         <div class="row tm-register-row tm-mb-35">
@@ -41,7 +41,7 @@ li a:hover {background-color:white; color:black;}
                         <input placeholder="Password" id="password" name="password" type="password" class="validate">
                     </div>
                     <div class="tm-flex-lr">
-                        <a href="#" class="white-text small">Forgot Password?</a>
+                        <a href="forgotpassword.php" class="white-text small">Forgot Password?</a>
                         <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">Login</button>
                     </div>
                     <?php

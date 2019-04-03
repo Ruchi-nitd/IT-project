@@ -1,3 +1,50 @@
+<?php
+$msg="";
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "Student";
+	// Create connection
+	$conn = new mysqli($servername, $username,$password, $dbname);
+	// Check connection
+	if ($conn->connect_error) 
+	{
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	else
+	{
+		 $msg ="User Not Found";
+	}
+	
+if(isset($_POST) & !empty($_POST)){
+	$username = mysqli_real_escape_string($conn, $_POST['email']);
+	$reg= mysqli_real_escape_string($conn, $_POST['reg']);
+	$roll= mysqli_real_escape_string($conn, $_POST['roll']);
+	$password= mysqli_real_escape_string($conn, $_POST['password']);
+	
+	$sql = "SELECT * FROM Info WHERE Email = '{$username}' AND Registration_Number='{$reg}' AND Roll_Number='{$roll}'";
+	$res = mysqli_query($conn, $sql);
+	$count = mysqli_num_rows($res);
+	if($count == 1)
+	{
+	    $sql = "UPDATE Info SET Password='$password' WHERE Email='{$username}'";
+		if ($conn->query($sql) === TRUE) {
+		header("location: login.php");
+		} 
+else {
+echo "Error updating record: " . $conn->error;
+}	
+ 
+	}
+	else
+	{
+		echo "User name does not exist in database";
+	}
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +53,6 @@ ul   {list-style-type: none; margin:0; padding:0;background-color:transparent; b
 li a {display:block; width:200px; height:60px;color:white; font-size:20px; text-align:center; padding: 14px 16px;}
 li   {text-align:center; float:left; background-color:transparent;} 
 li a:hover {background-color:white; color:black;}
-
 </style>
 
 <head>
@@ -20,6 +66,7 @@ li a:hover {background-color:white; color:black;}
 </head>
 
 <body id="login">	
+ <?php echo $msg;?>
 	<ul>
 	<li><a href="index.html">Home</a></li>
 	<li><a href="login.html">User-Login</a></li>
@@ -30,26 +77,32 @@ li a:hover {background-color:white; color:black;}
     <div class="container">
         <div class="row tm-register-row tm-mb-35">
             <div class="col-sm-6 tm-login-l">
-                <form action="log.php" method="post" class="tm-bg-black p-5 h-100">
+                <form action="" method="post" class="tm-bg-black p-5 h-100">
                     <div class="input-field">
-                        <input placeholder="Email" id="username" name="username" type="email" class="validate">
+                        <input placeholder="Email" id="email" name="email" type="email" class="validate">
                     </div>
-                    <div class="input-field mb-5">
-                        <input placeholder="Password" id="password" name="password" type="password" class="validate">
+               
+               		<div class="input-field">
+                        <input placeholder="Registration Number" id="reg" name="reg" type="text" class="validate">
                     </div>
+                    <div class="input-field">
+                        <input placeholder="Roll Number" id="roll" name="roll" type="text" class="validate">
+                    </div>
+               <div class="input-field">
+                        <input placeholder="New Password" id="password" name="password" type="password" class="validate">
+                    </div>
+               
+               
                     <div class="tm-flex-lr">
-                        <a href="forgotpassword.php" class="white-text small">Forgot Password?</a>
-                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">Login</button>
+                        <a href="login.php" class="white-text small">LOGIN</a>
+                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0" value="Reset 				Password">RESET PASSWORD</button>
+                    <br><br>
+                    <p id="response"></p>
+                    
                     </div>
                 </form>
             </div>
-            <div class="col-sm-6 tm-login-r">
-                <header class="font-weight-light tm-bg-black p-5 h-100">
-                    <h3 class="mt-0 text-white font-weight-light">Login</h3>
-                    <p>Please add some texts here.</p>
-                    <p class="mb-0">Please add some texts here.</p>
-                </header>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-sm-6 ml-auto mr-0 text-center">
@@ -60,6 +113,10 @@ li a:hover {background-color:white; color:black;}
 
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/materialize.min.js"></script>
+    
+   
+    
+    
     
     <script>
     (function (global) { 

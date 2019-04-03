@@ -88,13 +88,11 @@ session_start();
                     ?>
                     </li>
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="contact.html" class="tm-white-text">Contact Us</a>
+                        <a href="contact.php" class="tm-white-text">Contact Us</a>
                     </li>
+                    
                     <li class="d-flex justify-content-between align-items-center">
-                        <a href="about.html" class="tm-white-text">About Us</a>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center">
-                            <a href="faq.html" class="tm-white-text">FAQ</a>
+                            <a href="faq.php" class="tm-white-text">FAQ</a>
                         </li>
                 </ul>
             </div>

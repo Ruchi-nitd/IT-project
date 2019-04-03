@@ -54,8 +54,8 @@ while($row = $result->fetch_assoc()) {
 <div align="right">
 <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	<li><a href="logout.php">LOGOUT</a></li>
 	<li style="float:right; padding:10px 10px;"><?php echo "<span style='color:orange;font-size:20px;'> Welcome ".$row['Name']." ";?></li>
 	</ul>

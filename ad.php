@@ -38,7 +38,11 @@ $_SESSION['em']=$_POST['id'];
 header("location: view.php");  
 }
 
-
+if(isset($_POST['edit']))
+{
+$_SESSION['em']=$_POST['id'];
+header("location: edit.php");  
+}
 $sql = "SELECT * FROM Info where Approval_Status='Accepted'";
 $result = $conn->query($sql);
 ?>
@@ -128,8 +132,8 @@ th, td {
 	<div style="float:left">
 <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	<li><a href="logout.php">LOGOUT</a></li>
 	<li><a href="admin.php" style="color:red;">PENDING REQUESTS</a></li>
 	</ul>

@@ -32,6 +32,10 @@ if (isset($_POST['dob']))
 $dob = $_POST['dob'];
 else
 $dob = null;
+if (isset($_POST['age']))
+$age = $_POST['age'];
+else
+$age = null;
 if (isset($_POST['title']))
 $gender = $_POST['title'];
 else
@@ -64,8 +68,8 @@ $department=null;
 
 
 
-$sql = "INSERT INTO Info (Gender, Registration_Number, Name, Roll_Number, Email, Password, Mobile, Address, Date_of_Birth, Course, Department) 
-VALUES ('$gender','$reg','$name','$roll','$email','$password','$mobile','$address','$dob','$course','$department')";
+$sql = "INSERT INTO Info (Gender, Registration_Number, Name, Roll_Number, Email, Password, Mobile, Address, Date_of_Birth, Age,Course, Department) 
+VALUES ('$gender','$reg','$name','$roll','$email','$password','$mobile','$address','$dob','$age','$course','$department')";
 
 if ($conn->query($sql) === TRUE) {
 echo "<script> window.location.assign('login.php'); </script>";

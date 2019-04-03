@@ -6,6 +6,11 @@ ul   {list-style-type: none; margin:0; padding:0;background-color:black; border:
 li a {display:block; width:200px; height:80px;color:white; font-size:20px; text-align:center; padding: 14px 16px;}
 li   {text-align:center; float:left; background-color:black;} 
 li a:hover {background-color:white; color:black;}
+ input[type="file"]::-webkit-file-upload-button{
+        height:50px;
+  }
+
+
 </style>
 
 
@@ -23,15 +28,15 @@ li a:hover {background-color:white; color:black;}
 <body >
   <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="about.html">About Us</a></li>
-	<li><a href="faq.html">FAQ</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
 	<li><a href="logout.php">Logout</a></li>
 	</ul>
 	<br>
     <div class="container">
         <div class="row tm-register-row">
             <div class="col-sm-6 tm-register-col-l">
-                <form action="edit_details.php" method="post">
+                <form action="edit_details.php" method="post" enctype="multipart/form-data">
                    
                     <fieldset>
 		<legend>Personal Information</legend>
@@ -49,7 +54,7 @@ li a:hover {background-color:white; color:black;}
                     </div>
                     
                     <div class="input-field">
-                        <input placeholder="Guardian's name" id="gname" name="gname" type="text" class="validate" title="Name of Guardian"><span id="errfn" style="color:red"></span>
+                        <input placeholder="Guardian's name" id="gname" name="gname" type="text" class="validate" required title="Name of Guardian"><span id="errfn" style="color:red"></span>
                     </div>
                     
                     <div class="input-field">
@@ -90,7 +95,7 @@ li a:hover {background-color:white; color:black;}
                         <input placeholder="Hobbies" id="hobby" name="hobby" type="text" class="validate" title="Example: Singing" required disabled><span id="errfn4" style="color:red"></span>
                     </div>
                Uplaod a Profile photo<br><br>
-                     <input name="image" type="file" id="image" accept=".jpg,.jpeg,.png" size=40/>
+                     <input name="image" type="file" id="image">
                    
                     </fieldset>
                         
@@ -185,7 +190,7 @@ li a:hover {background-color:white; color:black;}
                     
                     </fieldset>
                         <br>
-        <center> <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button></center>
+        <center> <button type="submit" name="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button></center>
                 </form>
             </div>
         
@@ -504,6 +509,8 @@ li a:hover {background-color:white; color:black;}
         
         
         
+         
+	
         
         
         
@@ -544,5 +551,30 @@ li a:hover {background-color:white; color:black;}
     
     
 </body>
-
 </html>
+
+<script>
+$(document).ready(function()
+	{
+		$('#submit').click(function()
+		{
+			 var image_name=$('#image').val();
+			  if(image_name == '')
+			  {
+				alert("Please Select Image");
+				return false;	
+			  } 
+			  else
+			  {
+			  	var extension =$('#image').val().split('.').pop().toLowerCase();
+			 	 if(jQuery.inArray(extension,['gif','png','jpg','jpeg',]) == -1)
+			 	 {
+			 	 	alert('Invalid image file');
+			 	 	$('#image').val('');
+			 	 	return false; 	
+			 	 }
+			 }
+		   });
+	});
+		
+</script>

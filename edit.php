@@ -6,6 +6,7 @@ session_start();
  }
 ?>
  
+ 
 <!DOCTYPE>
 <html>
 <style>
@@ -21,21 +22,14 @@ a {font-size:20px; padding: 12px;}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Logged In| NITD</title>
+    <title>View | ADMIN</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mystyles.css">
 </head>
 
 <body>
-<div align=right>
-<ul>
-	<li><a href="index.php">Home</a></li>
-	<li><a href="Contact.php">Contact Us</a></li>
-	<li><a href="faq.php">FAQ</a></li>
-	<li><a href="logout.php">LOGOUT</a></li>
-	</ul>
-</div>
+
 
 <?php
 $servername = "localhost";
@@ -49,16 +43,29 @@ if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * from Info NATURAL JOIN Edit_Details where Email='{$_SESSION['username']}'";
+$sql = "SELECT * from Info NATURAL JOIN Edit_Details where Email='{$_SESSION['em']}'";
 $result = $conn->query($sql);
+?>
+<div align=right>
+
+<ul>
+	<li><a href="index.php">Home</a></li>
+	<li><a href="contact.php">Contact Us</a></li>
+	<li><a href="faq.php">FAQ</a></li>
+	<li><a href="ad.php">MY PROFILE</a></li>
+	<li><a href="logout.php">LOGOUT</a></li>
+	</ul>
+</div>
+<?php
 if ($result->num_rows > 0) {
 // output data of each row
 
 while($row = $result->fetch_assoc()) 
 {
-?>
+?> 
+
 	<form action="update.php" method=post> 
-	<h4>    BASIC INFO</h4>
+<h4>    BASIC INFO</h4>
 	<table align="center" border="1px" style="width:1250px; line-height:10px;">
 	
 	<tr>
